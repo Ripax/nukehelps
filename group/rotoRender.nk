@@ -1,13 +1,17 @@
 set cut_paste_input [stack 0]
 version 12.2 v3
+push 0
+push 0
+push 0
 push $cut_paste_input
 Group {
+ inputs 4
  name h_rotoRender
  tile_color 0x35a08eff
  label "v\[value version]"
  selected true
- xpos 2578
- ypos 287
+ xpos 2286
+ ypos -697
  addUserKnob {20 settings l Settings}
  addUserKnob {26 name_1 l "" +STARTLINE T "<font size=20 color=\"#ff8a48\"> rotoRender v1.8</font>"}
  addUserKnob {26 text_3 l "" +STARTLINE T " "}
@@ -17,16 +21,16 @@ Group {
  addUserKnob {41 alpha l Alpha -STARTLINE T __ghost__.alpha}
  addUserKnob {26 "" +STARTLINE}
  addUserKnob {4 chanel_which l Screen M {MATTE "CHANNEL RENDER" "" ""}}
- chanel_which "CHANNEL RENDER"
  addUserKnob {26 ""}
  addUserKnob {4 colorpick l "Color pick" M {"Dark Grey" "Light Grey" Cyan Yellow Magenta Custom "" "" "" ""}}
+ colorpick Custom
  addUserKnob {6 color_rgba_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
  addUserKnob {18 color l color_rgb}
  color {0.14 0.01 0.04}
  addUserKnob {6 color_rgb_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
  addUserKnob {26 ""}
  addUserKnob {7 matteMix l "Matte mix"}
- matteMix 0.9
+ matteMix 0.535
  addUserKnob {26 credit l "" +STARTLINE T "<span style=\"color:#666\"><br/><b>rotoRender - v1.8</b> - <a href=\"https://pyvfx.blogspot.com/\" style=\"color:#666;text-decoration: none;\">HTMLDigger</a>, 2019-2021</span>"}
  addUserKnob {20 info l Info}
  addUserKnob {26 info_1 l "" +STARTLINE T "Please make sure while you turn off input node please disconnect first from plate."}
@@ -117,8 +121,14 @@ Group {
   bdheight 208
   z_order 1
  }
- Dot {
+ Input {
   inputs 0
+  name Alpha
+  xpos 530
+  ypos -882
+  number 2
+ }
+ Dot {
   name dot_Alpha
   xpos 564
   ypos -479
@@ -130,15 +140,27 @@ Group {
   xpos 1157
   ypos -549
  }
- Dot {
+ Input {
   inputs 0
+  name Red
+  xpos 661
+  ypos -713
+  number 1
+ }
+ Dot {
   name dot_Red
   tile_color 0xff0000ff
   xpos 695
   ypos -612
  }
- Dot {
+ Input {
   inputs 0
+  name Green
+  xpos 899
+  ypos -849
+  number 3
+ }
+ Dot {
   name dot_Green
   tile_color 0xff00ff
   xpos 933
@@ -180,7 +202,7 @@ Group {
   temp_expr1 rg>b?rg:b
   temp_name2 rgba
   temp_expr2 rgb>a?rgb:a
-  expr3 a
+  expr3 rg+rgb+rgba
   name Expression1
   xpos 899
   ypos 20
@@ -324,9 +346,12 @@ push 0
   ypos 483
   addUserKnob {20 settings l Settings}
   addUserKnob {6 red l Red +STARTLINE}
+  red true
   addUserKnob {6 green l Green -STARTLINE}
+  green true
   addUserKnob {6 blue l Blue -STARTLINE}
   addUserKnob {6 alpha l Alpha -STARTLINE}
+  alpha true
  }
  Output {
   name Output1
