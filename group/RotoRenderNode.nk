@@ -1,0 +1,320 @@
+Group {
+ name Roto_Render
+ selected true
+ xpos 2628
+ ypos 297
+ addUserKnob {20 settings l Settings}
+ addUserKnob {41 red l Red T __ghost__.red}
+ addUserKnob {41 green l Green -STARTLINE T __ghost__.green}
+ addUserKnob {41 blue l Blue -STARTLINE T __ghost__.blue}
+ addUserKnob {41 alpha l Alpha -STARTLINE T __ghost__.alpha}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {4 chanel_which l Screen M {MATTE "CHANNEL RENDER" "" ""}}
+ chanel_which "CHANNEL RENDER"
+ addUserKnob {26 ""}
+ addUserKnob {4 colorpick l "Color pick" M {"Dark Grey" "Light Grey" Cyan Yellow Magenta Custom "" "" "" ""}}
+ addUserKnob {6 color_rgba_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
+ addUserKnob {18 color l color_rgb}
+ color {0.14 0.01 0.04}
+ addUserKnob {6 color_rgb_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 ""}
+ addUserKnob {7 matteMix l "Matte mix"}
+ matteMix 0.9
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x2f3a2fff
+  note_font_size 42
+  xpos -429
+  ypos -346
+  bdwidth 810
+  bdheight 552
+ }
+ BackdropNode {
+  inputs 0
+  name Expression
+  tile_color 0xaaaaaa00
+  label "\[value name]"
+  note_font_size 42
+  xpos 889
+  ypos -199
+  bdwidth 483
+  bdheight 546
+ }
+ BackdropNode {
+  inputs 0
+  name mainspline
+  tile_color 0x7171c600
+  label "\[value name]"
+  note_font_size 20
+  xpos 394
+  ypos -360
+  bdwidth 114
+  bdheight 1001
+ }
+ BackdropNode {
+  inputs 0
+  name matte_input_area
+  tile_color 0x455b45ff
+  label "\[value name]"
+  note_font_size 42
+  xpos 520
+  ypos -962
+  bdwidth 852
+  bdheight 750
+ }
+ BackdropNode {
+  inputs 0
+  name BasicChannel
+  tile_color 0x8e388e00
+  label "\[value name]"
+  note_font_size 42
+  xpos -166
+  ypos -238
+  bdwidth 540
+  bdheight 156
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name Custome
+  tile_color 0xaaaaaa00
+  label "\[value name]"
+  note_font_size 20
+  xpos -425
+  ypos -325
+  bdwidth 98
+  bdheight 519
+  z_order 1
+ }
+ BackdropNode {
+  inputs 0
+  name Please_donot_change_anything
+  tile_color 0x388e8e00
+  label "\[value name]"
+  note_font_size 20
+  note_font_color 0xffffffff
+  xpos -132
+  ypos -8
+  bdwidth 472
+  bdheight 208
+  z_order 1
+ }
+ Dot {
+  inputs 0
+  name dot_Alpha
+  xpos 564
+  ypos -479
+ }
+ Dot {
+  inputs 0
+  name dot_Blue
+  tile_color 0xffff
+  xpos 1157
+  ypos -549
+ }
+ Dot {
+  inputs 0
+  name dot_Red
+  tile_color 0xff0000ff
+  xpos 695
+  ypos -612
+ }
+ Dot {
+  inputs 0
+  name dot_Green
+  tile_color 0xff00ff
+  xpos 933
+  ypos -729
+ }
+ ShuffleCopy {
+  inputs 2
+  red alpha
+  green alpha2
+  blue black
+  alpha black
+  name ShuffleCopy1
+  xpos 899
+  ypos -615
+ }
+ ShuffleCopy {
+  inputs 2
+  blue alpha
+  alpha black
+  name ShuffleCopy2
+  xpos 899
+  ypos -552
+ }
+ ShuffleCopy {
+  inputs 2
+  name ShuffleCopy3
+  xpos 899
+  ypos -482
+ }
+ Clamp {
+  name Clamp1
+  xpos 899
+  ypos -72
+ }
+ Expression {
+  temp_name0 rg
+  temp_expr0 r>g?r:g
+  temp_name1 rgb
+  temp_expr1 rg>b?rg:b
+  temp_name2 rgba
+  temp_expr2 rgb>a?rgb:a
+  expr3 a
+  name Expression1
+  xpos 899
+  ypos 20
+ }
+set Nb530d800 [stack 0]
+ Constant {
+  inputs 0
+  channels rgb
+  name Constant3
+  xpos 1282
+  ypos -119
+ }
+ Merge2 {
+  inputs 2
+  name Merge7
+  label "BBox: \[value bbox]"
+  xpos 1282
+  ypos 14
+ }
+ Dot {
+  name Dot22
+  xpos 1316
+  ypos 325
+ }
+push $Nb530d800
+ Dot {
+  name Dot18
+  xpos 933
+  ypos 169
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {{parent.color.r} {parent.color.g} {parent.color.b} 0}
+  name custome_color
+  xpos -419
+  ypos -266
+ }
+ Dot {
+  name Dot6
+  xpos -385
+  ypos 169
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0.5 0 0.5 0}
+  name mag
+  xpos 284
+  ypos -158
+ }
+ Dot {
+  name Dot5
+  xpos 318
+  ypos 72
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0.5 0.5 0 0}
+  name yel
+  xpos 174
+  ypos -158
+ }
+ Dot {
+  name Dot4
+  xpos 208
+  ypos 75
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0 0.5 0.5 0}
+  name cyn
+  xpos 64
+  ypos -158
+ }
+ Dot {
+  name Dot3
+  xpos 98
+  ypos 77
+ }
+push 0
+ Constant {
+  inputs 0
+  channels rgb
+  color 0.5
+  name l_gr
+  xpos -46
+  ypos -158
+ }
+ Dot {
+  name Dot2
+  xpos -12
+  ypos 77
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color 0.18
+  name d_gr
+  xpos -156
+  ypos -158
+ }
+ Dot {
+  name Dot1
+  xpos -122
+  ypos 75
+ }
+ Dissolve {
+  inputs 6+1
+  which {{colorpick}}
+  name Dissolve1
+  xpos 64
+  ypos 160
+ }
+ Input {
+  inputs 0
+  name I_Plate
+  xpos 404
+  ypos -280
+ }
+ Keymix {
+  inputs 3
+  mix {{matteMix}}
+  name Keymix2
+  xpos 404
+  ypos 160
+ }
+ Switch {
+  inputs 2
+  which {{chanel_which}}
+  name Switch_
+  xpos 404
+  ypos 322
+ }
+ Dot {
+  name __ghost__
+  knobChanged "## BY HTMLDIgger ##\nthisNode = nuke.thisNode()\nthisKnob = nuke.thisKnob()\nknobName  = thisKnob.name()\nknobValue = thisKnob.getValue()\n\n## toNode ##\n\n\n## template By HTMLDigger Date : 04-09-2021 ##\n\n\nif knobName == \"red\":\n    if knobValue == 1:\n        print(\"red\")\n        inputNode = nuke.nodes.Input()\n        inputNode\['xpos'].setValue(661)\n        inputNode\['ypos'].setValue(-713)\n        inputNode.setName('Red')\n        nuke.toNode('dot_Red').setInput(0, inputNode)\n    else:\n        nuke.delete(nuke.toNode(\"Red\"))\n        print(\"ERROR -- RED INPUT Clean\")\nelif knobName == \"green\":\n    if knobValue == 1:\n        print(\"green\")\n        inputNode = nuke.nodes.Input()\n        inputNode\['xpos'].setValue(899)\n        inputNode\['ypos'].setValue(-849)\n        inputNode.setName('Green')\n        nuke.toNode('dot_Green').setInput(0, inputNode)\n    else:\n        nuke.delete(nuke.toNode(\"Green\"))\n        print(\"ERROR -- GREEN INPUT Clean\")\nelif knobName == \"blue\":\n    if knobValue == 1:\n        print(\"Blue\")\n        inputNode = nuke.nodes.Input()\n        inputNode\['xpos'].setValue(1123)\n        inputNode\['ypos'].setValue(-859)\n        inputNode.setName('Blue')\n        nuke.toNode('dot_Blue').setInput(0, inputNode)\n    else:\n        nuke.delete(nuke.toNode(\"Blue\"))\n        print(\"ERROR -- BLUE INPUT Clean\")\nelif knobName == \"alpha\":\n    if knobValue == 1:\n        print(\"Alpha\")\n        inputNode = nuke.nodes.Input()\n        inputNode\['xpos'].setValue(530)\n        inputNode\['ypos'].setValue(-882)\n        inputNode.setName('Alpha')\n        nuke.toNode('dot_Alpha').setInput(0, inputNode)\n    else:\n        nuke.delete(nuke.toNode(\"Alpha\"))\n        tprint(\"ERROR -- ALPHA INPUT Clean\")\n        "
+  xpos 438
+  ypos 483
+  addUserKnob {20 settings l Settings}
+  addUserKnob {6 red l Red +STARTLINE}
+  addUserKnob {6 green l Green -STARTLINE}
+  addUserKnob {6 blue l Blue -STARTLINE}
+  addUserKnob {6 alpha l Alpha -STARTLINE}
+ }
+ Output {
+  name Output1
+  xpos 404
+  ypos 589
+ }
+end_group
