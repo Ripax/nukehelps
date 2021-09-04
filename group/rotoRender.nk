@@ -1,9 +1,16 @@
+set cut_paste_input [stack 0]
+version 12.2 v3
+push $cut_paste_input
 Group {
- name Roto_Render
+ name h_rotoRender
+ tile_color 0x35a08eff
+ label "v\[value version]"
  selected true
- xpos 2628
- ypos 297
+ xpos 2578
+ ypos 287
  addUserKnob {20 settings l Settings}
+ addUserKnob {26 name_1 l "" +STARTLINE T "<font size=20 color=\"#ff8a48\"> rotoRender v1.8</font>"}
+ addUserKnob {26 text_3 l "" +STARTLINE T " "}
  addUserKnob {41 red l Red T __ghost__.red}
  addUserKnob {41 green l Green -STARTLINE T __ghost__.green}
  addUserKnob {41 blue l Blue -STARTLINE T __ghost__.blue}
@@ -20,6 +27,15 @@ Group {
  addUserKnob {26 ""}
  addUserKnob {7 matteMix l "Matte mix"}
  matteMix 0.9
+ addUserKnob {26 credit l "" +STARTLINE T "<span style=\"color:#666\"><br/><b>rotoRender - v1.8</b> - <a href=\"https://pyvfx.blogspot.com/\" style=\"color:#666;text-decoration: none;\">HTMLDigger</a>, 2019-2021</span>"}
+ addUserKnob {20 info l Info}
+ addUserKnob {26 info_1 l "" +STARTLINE T "Please make sure while you turn off input node please disconnect first from plate."}
+ addUserKnob {26 text l "" +STARTLINE}
+ addUserKnob {1 version l Version +INVISIBLE}
+ version 1.8
+ addUserKnob {26 text_1 l "" +STARTLINE}
+ addUserKnob {26 text_2 l "" +STARTLINE T " "}
+ addUserKnob {22 oninternet l "Me on internet" T "import webbrowser\nwebbrowser.open(\"https://github.com/Ripax/nukehelps/blob/main/group/RotoRenderNode.nk\")" +STARTLINE}
 }
  BackdropNode {
   inputs 0
